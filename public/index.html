@@ -4,9 +4,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>UI Stash | Create a Library of UI Inspiration</title>
-    <link href="css/style.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+    <link href="./css/style.css" rel="stylesheet">
 </head>
 <body>
-    
+
+<section class="stash-form mt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <header>
+          <h3>Add a New Item to Your Stash</h3>
+        </header>
+        <form>
+          <div class="form-group">
+            <label for="ss-url">URL of webpage to save</label>
+            <input type="text" class="form-control" id="ss-url" aria-describedby="ss-url-help" placeholder="https://google.com">
+            <small id="ss-url-help" class="form-text text-muted">
+              Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+            </small>
+            <div class="invalid-feedback">
+              Please provide a valid URL.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="ss-title">Name Screenshot (optional)</label>
+            <input type="text" class="form-control" id="ss-title" placeholder="Exploded Grid Layout">
+          </div>
+          <div class="form-group">
+            <label for="ss-projects">Projects</label>
+            <select multiple class="form-control" id="ss-projects">
+              <option>JH Public Art</option>
+              <option>Niche Interiors</option>
+              <option>Prenupta</option>
+              <option>The Katagami Project</option>
+              <option>The Unwinder</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ss-tags">Tags</label>
+            <textarea class="form-control" id="ss-tags" rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="ss-notes">Notes</label>
+            <textarea class="form-control" id="ss-notes" rows="3"></textarea>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="stash-grid">
+  <div class="container-fluid">
+    <header>
+      <h3>Your UI Library</h3>
+    </header>
+    <div id="ss-grid">
+      
+    </div>
+  </div>
+</section>
+  <!-- js -->
+  <script src="./js/bundle.js"></script>
 </body>
 </html>
