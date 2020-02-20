@@ -1,19 +1,22 @@
 {
-  "name": "js",
+  "name": "ui-stash",
   "version": "1.0.0",
-  "description": "",
+  "description": "Create a library of UI inspiration",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "browserify app.js -o bundle.js",
+    "watch": "watchify app.js -o bundle.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "@galenstrasen",
   "license": "ISC",
   "dependencies": {
+    "firebase": "^7.9.0",
     "jquery": "^3.4.1"
   },
   "devDependencies": {
     "browserify": "^16.5.0",
+    "bulma": "^0.8.0",
     "watchify": "^3.11.1"
   }
 }
