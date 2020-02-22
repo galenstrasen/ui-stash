@@ -11,6 +11,10 @@
 
 
 /* MASONRY GRID */
+.stash-grid {
+    padding: 10px;
+}
+
 .grid-item {
     width: calc(20% - 20px);
     display: block;
