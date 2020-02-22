@@ -2,9 +2,9 @@
 const firebase = require('firebase');
 require('firebase/database');
 require('firebase/app');
-const firebaseConfig = require('./keys');
-firebase.initializeApp(firebaseConfig);
+const keys = require('./keys');
+firebase.initializeApp(keys.firebaseConfig);
 
-// jquery
-const $ = require('jquery'); 
+// grab api key
+const apiFlash = keys.apiFlash;
 
