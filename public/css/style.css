@@ -1,0 +1,24 @@
+
+/* HEADER */
+.page-header .navbar-expand-lg {
+    justify-content: space-between;
+}
+
+.page-header .navbar-expand-lg .navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* MASONRY GRID */
+.grid-item {
+    width: calc(20% - 20px);
+    display: block;
+    margin: 10px;
+}
+
+.grid-item img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
