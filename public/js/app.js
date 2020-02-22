@@ -42,3 +42,13 @@ $('#new-stash').submit((e) => {
 function createGridItem(url, tags, notes) {
     const ssGrid = document.querySelector('#ss-grid');
 }
+
+// Masonry Grid
+require('imagesloaded');
+require('isotope-layout');
+const Masonry = require('masonry-layout');
+
+var elem = document.querySelector('#ss-grid');
+var msnry = new Masonry( elem, {
+  itemSelector: '.js-grid-item'
+});
