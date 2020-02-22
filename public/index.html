@@ -11,62 +11,144 @@
     <link href="./css/style.css" rel="stylesheet">
 </head>
 <body>
-
-<section class="stash-form mt-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <header>
-          <h3>Add a New Item to Your Stash</h3>
-        </header>
-        <form>
-          <div class="form-group">
-            <label for="ss-url">URL of webpage to save</label>
-            <input type="text" class="form-control" id="ss-url" aria-describedby="ss-url-help" placeholder="https://google.com">
-            <small id="ss-url-help" class="form-text text-muted">
-              Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-            </small>
-            <div class="invalid-feedback">
-              Please provide a valid URL.
+  <header class="page-header">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">My UI Stash</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <!-- <li class="nav-item active">
+          <a class="nav-link" href="#">Projects</a>
+        </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="project-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Projects
+          </a>
+          <div class="dropdown-menu" aria-labelledby="project-dropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="tags-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Tags
+          </a>
+          <div class="dropdown-menu" aria-labelledby="tags-dropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+      <!-- <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form> -->
+      <form class="form-inline my-2 my-lg-0">
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+          Add new +
+        </button>
+      </form>
+    
+  </nav>
+  </header>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add New Item to Stash</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="new-stash">
+            <div class="form-group">
+              <label for="ss-url">URL of webpage to save</label>
+              <input type="text" class="form-control form-control-lg" id="ss-url" aria-describedby="ss-url-help" placeholder="https://google.com">
+              <!-- <small id="ss-url-help" class="form-text text-muted">
+                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+              </small> -->
+              <div class="invalid-feedback">
+                Please provide a valid URL.
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="ss-title">Name Screenshot (optional)</label>
-            <input type="text" class="form-control" id="ss-title" placeholder="Exploded Grid Layout">
-          </div>
-          <div class="form-group">
-            <label for="ss-projects">Projects</label>
-            <select multiple class="form-control" id="ss-projects">
-              <option>JH Public Art</option>
-              <option>Niche Interiors</option>
-              <option>Prenupta</option>
-              <option>The Katagami Project</option>
-              <option>The Unwinder</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="ss-tags">Tags</label>
-            <textarea class="form-control" id="ss-tags" rows="2"></textarea>
-          </div>
-          <div class="form-group">
-            <label for="ss-notes">Notes</label>
-            <textarea class="form-control" id="ss-notes" rows="3"></textarea>
-          </div>
-        </form>
+            <!-- <div class="form-group">
+              <label for="ss-title">Name Screenshot (optional)</label>
+              <input type="text" class="form-control" id="ss-title" placeholder="Exploded Grid Layout">
+            </div> -->
+            <!-- <div class="form-group">
+              <label for="ss-projects">Projects</label>
+              <select multiple class="form-control" id="ss-projects">
+                <option>JH Public Art</option>
+                <option>Niche Interiors</option>
+                <option>Prenupta</option>
+                <option>The Katagami Project</option>
+                <option>The Unwinder</option>
+              </select>
+            </div> -->
+            <div class="form-group">
+              <label for="ss-tags">Add Tags</label>
+              <textarea class="form-control form-control-sm" id="ss-tags" rows="1"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="ss-notes">Notes</label>
+              <textarea class="form-control form-control-sm" id="ss-notes" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+          </form>
+        </div>
+        
       </div>
     </div>
   </div>
-</section>
+
 <section class="stash-grid">
-  <div class="container-fluid">
-    <header>
-      <h3>Your UI Library</h3>
-    </header>
-    <div id="ss-grid">
-      
-    </div>
+  <div id="ss-grid">
+    <a href="" class="grid-item js-grid-item">
+      <img src="https://via.placeholder.com/500x500" alt="" />
+    </a>
+    <a href="" class="grid-item js-grid-item">
+      <img src="https://via.placeholder.com/500x100" alt="" />
+    </a>
+    <a href="" class="grid-item js-grid-item">
+      <img src="https://via.placeholder.com/500x500" alt="" />
+    </a>
+    <a href="" class="grid-item js-grid-item">
+      <img src="https://via.placeholder.com/500x1500" alt="" />
+    </a>
+    <a href="" class="grid-item js-grid-item">
+      <img src="https://via.placeholder.com/500x500" alt="" />
+    </a>
+    <a href="" class="grid-item js-grid-item">
+      <img src="https://via.placeholder.com/700x900" alt="" />
+    </a>
+    <a href="" class="grid-item js-grid-item">
+      <img src="https://via.placeholder.com/500x500" alt="" />
+    </a>
+    <a href="" class="grid-item js-grid-item">
+      <img src="https://via.placeholder.com/500x892" alt="" />
+    </a>
+    <a href="" class="grid-item js-grid-item">
+      <img src="https://via.placeholder.com/500x500" alt="" />
+    </a>
+    <a href="" class="grid-item js-grid-item">
+      <img src="https://via.placeholder.com/500x500" alt="" />
+    </a>
   </div>
 </section>
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
   <!-- js -->
   <script src="./js/bundle.js"></script>
 </body>
