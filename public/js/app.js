@@ -38,3 +38,7 @@ $('#new-stash').submit((e) => {
         notes: ssNotes
     });
 });
+
+function createGridItem(url, tags, notes) {
+    const ssGrid = document.querySelector('#ss-grid');
+}
