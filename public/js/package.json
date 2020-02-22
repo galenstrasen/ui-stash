@@ -12,7 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "firebase": "^7.9.0",
-    "jquery": "^3.4.1"
+    "imagesloaded": "^4.1.4",
+    "isotope-layout": "^3.0.6",
+    "jquery": "^3.4.1",
+    "masonry-layout": "^4.2.2"
   },
   "devDependencies": {
     "browserify": "^16.5.0",
