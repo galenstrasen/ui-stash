@@ -27,7 +27,7 @@ const getShots = () => {
       const ssUrl = allShots[shot].url;
       const ssImg = allShots[shot].image;
       const ssTags = allShots[shot].tags;
-      const ssTitle = allShots[shot].title;
+      //const ssTitle = allShots[shot].title;
       const ssDate = allShots[shot].date;
       const ssNotes = allShots[shot].notes;
       const gridItemElement = document.createElement('a');
@@ -126,8 +126,8 @@ const getShots = () => {
         const sourceLink = document.querySelector('.item-source');
         sourceLink.href = ssUrl;
         
-        const title = document.querySelector('.item-title');
-        title.textContent = ssTitle;
+        // const title = document.querySelector('.item-title');
+        // title.textContent = ssTitle;
 
         const date = document.querySelector('.date-added');
         date.textContent = ssDate;
@@ -261,6 +261,13 @@ window.addEventListener('DOMContentLoaded', function() {
     });
     document.querySelector('#ss-tags').value = '';
 
+    const selectedProjects = document.querySelectorAll('#ss-projects option:checked');
+    const projects = [];
+    selectedProjects.forEach((project) => {
+      projects.push(project.label);
+    });
+    document.querySelector('#ss-projects').value = '';
+
     const ssNotes = document.querySelector('#ss-notes').value;
     document.querySelector('#ss-notes').value = '';
 
@@ -294,7 +301,8 @@ window.addEventListener('DOMContentLoaded', function() {
     ssRef.push({
       url: ssUrl, 
       image: apiUrl,
-      label: ssLabel,
+      //label: ssLabel,
+      projects: projects,
       date: today,
       tags: ssTags,
       notes: ssNotes
