@@ -28,12 +28,11 @@
               Projects
             </a>
             <div class="dropdown-menu" aria-labelledby="project-dropdown">
-              <a class="dropdown-item" href="#">Niche Interiors</a>
-              <a class="dropdown-item" href="#">The Katagami Project</a>
-              <a class="dropdown-item" href="#">The Beauty Library</a>
+              <div id="project-wrap"></div>
+              
               <div class="dropdown-divider"></div>
               <a class="dropdown-item text-secondary" href="#"><small>Manage Projects</small></a>
-              <a class="dropdown-item text-secondary" href="#"><small>Add New Project +</small></a>
+              <button class="dropdown-item text-secondary" data-toggle="modal" data-target="#addProject"><small>Add New Project +</small></button>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -124,20 +123,17 @@
             <label for="ss-label">Label Screenshot</label>
             <input type="text" class="form-control" id="ss-label" placeholder="Parallax Inspiration">
           </div>
+         
           <!-- <div class="form-group">
             <label for="ss-title">Name Screenshot (optional)</label>
             <input type="text" class="form-control" id="ss-title" placeholder="Exploded Grid Layout">
           </div> -->
-          <!-- <div class="form-group">
+          <div class="form-group">
             <label for="ss-projects">Projects</label>
             <select multiple class="form-control" id="ss-projects">
               <option>JH Public Art</option>
-              <option>Niche Interiors</option>
-              <option>Prenupta</option>
-              <option>The Katagami Project</option>
-              <option>The Unwinder</option>
             </select>
-          </div> -->
+          </div>
           <div class="form-group">
             <label for="ss-tags">Add Tags</label>
             <textarea class="form-control form-control-sm" aria-describedby="ss-tags-help" id="ss-tags" rows="2"></textarea>
@@ -221,6 +217,29 @@
         </form>
       </div>
       
+    </div>
+  </div>
+</div>
+
+<!-- ADD PROJECT MODAL -->
+<div class="modal fade" id="addProject" tabindex="-1" role="dialog" aria-labelledby="itemDetailLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addNewFormLabel">Add New Project</h5>
+        <button type="button" class="add-project-close close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="add-project">
+          <div class="form-group">
+            <label for="project-name">Project Name</label>
+            <input type="text" class="form-control" id="project-name">
+          </div>
+          <button type="submit" class="btn btn-warning btn-lg btn-block">Save</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

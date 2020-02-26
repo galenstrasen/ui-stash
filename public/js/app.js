@@ -194,6 +194,44 @@ const createAction = (parent, classList, modal, target) => {
   }
 }
 
+const getProjects = () => {
+  db.ref('projects').on('value', function(results) {
+    const projDropdown = document.querySelector('#project-wrap');
+    const projSelect = document.querySelector('#ss-projects');
+    const projectsDropdown = [];
+    const projectsSelect = [];
+    const allProjects = results.val(); // Firebase SDK method to get data from API response
+
+    for (let project in allProjects) {
+      const projName = allProjects[project].name;
+      const projOption = document.createElement('OPTION');
+      const projFilter = document.createElement('a');
+      
+      projFilter.classList.add('dropdown-item');
+      projFilter.textContent = projName;
+      projOption.setAttribute('value', projName);
+      let text = document.createTextNode(projName);
+      projOption.appendChild(text);
+
+      projectsDropdown.push(projFilter);
+      projectsSelect.push(projOption);
+
+    }
+    while(projDropdown.firstChild) {
+      projDropdown.removeChild(projDropdown.firstChild);
+    }
+    while(projSelect.firstChild) {
+      projSelect.removeChild(projSelect.firstChild);
+    }
+    projectsDropdown.forEach((element) => {
+      projDropdown.appendChild(element);
+    });
+    projectsSelect.forEach((element) => {
+      projSelect.appendChild(element);
+    });
+  });
+};
+
 const simulateClick = function (elem) {
 	// Create our event (with options)
 	const evt = new MouseEvent('click', {
@@ -273,5 +311,20 @@ window.addEventListener('DOMContentLoaded', function() {
 
   });
   getShots();
+  document.querySelector('#add-project').addEventListener('submit', function() {
+    event.preventDefault();
+    const projectName = document.querySelector('#project-name').value;
+    document.querySelector('#project-name').value = '';
+
+    const projectRef = db.ref('projects');
+    projectRef.push({
+      name: projectName
+    });
+
+    const close = document.querySelector('.add-project-close');
+    simulateClick(close);
+
+  });
+  getProjects();
 });
 
