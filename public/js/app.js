@@ -54,7 +54,20 @@ const getShots = () => {
       deleteElement.setAttribute('data-toggle', 'modal');
       deleteElement.setAttribute('data-target', '#deleteItem');
       const deleteBtn = document.querySelector('.delete-item');
-      
+      // on delete element click, trigger modal 
+      deleteElement.addEventListener('click', function(event) {
+        if(deleteBtn.getAttribute('data-item-id').length > 0) {
+          deleteBtn.removeAttribute('data-item-id');
+        }
+        
+        const id = event.target.parentNode.parentNode.parentNode.parentNode.dataset.id;
+        deleteBtn.setAttribute('data-item-id', id);
+     
+        deleteBtn.addEventListener('click', function(event) {
+          const id = event.target.getAttribute('data-item-id');
+          deleteMessage(id); 
+        });  
+      });
 
             
       const viewLi = document.createElement('li');
@@ -66,31 +79,31 @@ const getShots = () => {
 
       gridItemElement.appendChild(cardCover);
    
-      gridItemElement.addEventListener('click', function(e) {
-          const tagsList = document.querySelector('#itemDetailLabel');
-          tagsList.textContent = ''; // clear tags list first
-          e.preventDefault();
-          const lgImg = document.querySelector('.item-img');
-          lgImg.src = ssImg;
-          const sourceLink = document.querySelector('.item-source');
-          sourceLink.href = ssUrl;
+      // gridItemElement.addEventListener('click', function(e) {
+      //     const tagsList = document.querySelector('#itemDetailLabel');
+      //     tagsList.textContent = ''; // clear tags list first
+      //     e.preventDefault();
+      //     const lgImg = document.querySelector('.item-img');
+      //     lgImg.src = ssImg;
+      //     const sourceLink = document.querySelector('.item-source');
+      //     sourceLink.href = ssUrl;
           
-          const title = document.querySelector('.item-title');
-          title.textContent = ssTitle;
+      //     const title = document.querySelector('.item-title');
+      //     title.textContent = ssTitle;
 
-          const date = document.querySelector('.date-added');
-          date.textContent = ssDate;
+      //     const date = document.querySelector('.date-added');
+      //     date.textContent = ssDate;
 
-          //tagsList.textContent = ssTags;
-          ssTags.forEach((tag) => {
-            let pill = document.createElement('button');
-            pill.classList.add('btn', 'btn-sm', 'btn-outline-info');
-            pill.textContent = tag;
-            tagsList.appendChild(pill);
-          });
-          const notesOutput = document.querySelector('.item-description');
-          notesOutput.textContent = ssNotes;
-        });
+      //     //tagsList.textContent = ssTags;
+      //     ssTags.forEach((tag) => {
+      //       let pill = document.createElement('button');
+      //       pill.classList.add('btn', 'btn-sm', 'btn-outline-info');
+      //       pill.textContent = tag;
+      //       tagsList.appendChild(pill);
+      //     });
+      //     const notesOutput = document.querySelector('.item-description');
+      //     notesOutput.textContent = ssNotes;
+      //   });
 
       
 
@@ -113,6 +126,12 @@ const getShots = () => {
       ssGrid.appendChild(element);
     });
   });
+};
+
+const deleteMessage = (id) => {
+  // find message whose objectId is equal to the id we're searching with
+  const messageReference =  db.ref('screenshots').child(id);
+  messageReference.remove();
 };
 
 
