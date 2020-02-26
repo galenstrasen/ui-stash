@@ -34,6 +34,7 @@ const getShots = () => {
       // load form with info as value 
       // if any of the values change, update the data
       // or click "save changes"
+      
       const cardCover = document.createElement('div');
       cardCover.classList.add('card-content');
       const icoList = document.createElement('ul');
@@ -135,15 +136,28 @@ const deleteShot = (id) => {
 };
 
 
-var simulateClick = function (elem) {
+const createAction = (parent, classList, modal, target) => {
+  let itemLi = document.createElement('li');
+  parent.appendChild(itemLi);
+  let itemElement = document.createElement('i');
+  itemLi.appendChild(itemElement);
+  let classes = classList.join(', ');
+  itemElement.classList.add(...classList);
+  if(modal) {
+    itemElement.setAttribute('data-toggle', 'modal');
+    itemElement.setAttribute('data-target', target);
+  }
+}
+
+const simulateClick = function (elem) {
 	// Create our event (with options)
-	var evt = new MouseEvent('click', {
+	const evt = new MouseEvent('click', {
 		bubbles: true,
 		cancelable: true,
 		view: window
 	});
 	// If cancelled, don't dispatch our event
-	var canceled = !elem.dispatchEvent(evt);
+	const canceled = !elem.dispatchEvent(evt);
 };
 
 // add form entries to database
