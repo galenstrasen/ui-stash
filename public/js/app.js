@@ -17,6 +17,16 @@ const ssmKey = keys.ssmApi;
 const ssmSecretPhrase = keys.ssmSecret; 
 const fs = require('fs');
 
+var simulateClick = function (elem) {
+	// Create our event (with options)
+	var evt = new MouseEvent('click', {
+		bubbles: true,
+		cancelable: true,
+		view: window
+	});
+	// If cancelled, don't dispatch our event
+	var canceled = !elem.dispatchEvent(evt);
+};
 
 // add form entries to database
 window.addEventListener('DOMContentLoaded', function() {
@@ -80,7 +90,8 @@ window.addEventListener('DOMContentLoaded', function() {
         tagName: tag
       });
     });
-    
+    const close = document.querySelector('.item-close');
+    simulateClick(close);
 
   });
   getShots();
