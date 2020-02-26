@@ -56,14 +56,16 @@ const getShots = () => {
         
         // update form values with values from database
         document.querySelector('#ss-url-edit').value = ssUrl;
-        document.querySelector('#ss-tags-edit').value = ssTags;
+        document.querySelector('#ss-tags-edit').value = ssTags.join(', ');
         document.querySelector('#ss-notes-edit').value = ssNotes;
         
         editForm.addEventListener('submit', function(event){
           event.preventDefault();
           const id = event.target.getAttribute('data-item-id');
           const newTags = document.querySelector('#ss-tags-edit').value;
-          const editedTags = newTags.split(',');
+          const editedTags = newTags.split(',').map(function(tag) {
+            return tag.trim();
+          });
           const editedNotes = document.querySelector('#ss-notes-edit').value;
    
           editShot(id, editedTags, editedNotes);
