@@ -1,13 +1,21 @@
+// secrets
+const keys = require('./keys');
+
 // firebase
 const firebase = require('firebase');
 require('firebase/database');
 require('firebase/app');
-const keys = require('./keys');
 firebase.initializeApp(keys.firebaseConfig);
 const db = firebase.database();
 
-// grab api key
-const apiFlash = keys.apiFlash;
+// masonry 
+require('./_masonry');
+
+// screenshot machine requirements
+const screenshotmachine = require('screenshotmachine');
+const ssmKey = keys.ssmApi;
+const ssmSecretPhrase = keys.ssmSecret; 
+const fs = require('fs');
 
 
 // add form entries to database
