@@ -13,107 +13,92 @@
 </head>
 <body>
   <header class="page-header">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">UI Stash</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+      <a class="navbar-brand" href="#">UI Stash</a>
+      <!-- mobile hamburger -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
   
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <!-- <li class="nav-item active">
-          <a class="nav-link" href="#">Projects</a>
-        </li> -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="project-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Projects
-          </a>
-          <div class="dropdown-menu" aria-labelledby="project-dropdown">
-            <a class="dropdown-item" href="#">Niche Interiors</a>
-            <a class="dropdown-item" href="#">The Katagami Project</a>
-            <a class="dropdown-item" href="#">The Beauty Library</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item text-secondary" href="#"><small>Manage Projects</small></a>
-            <a class="dropdown-item text-secondary" href="#"><small>Add New Project +</small></a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="tags-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Tags
-          </a>
-          <div class="dropdown-menu" aria-labelledby="tags-dropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-      <!-- <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="project-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Projects
+            </a>
+            <div class="dropdown-menu" aria-labelledby="project-dropdown">
+              <a class="dropdown-item" href="#">Niche Interiors</a>
+              <a class="dropdown-item" href="#">The Katagami Project</a>
+              <a class="dropdown-item" href="#">The Beauty Library</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item text-secondary" href="#"><small>Manage Projects</small></a>
+              <a class="dropdown-item text-secondary" href="#"><small>Add New Project +</small></a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="tags-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Tags
+            </a>
+            <div class="dropdown-menu" aria-labelledby="tags-dropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+      </div>
       <form class="form-inline my-2 my-lg-0">
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addNewForm">
           Add new +
         </button>
       </form>
-    
-  </nav>
+    </nav>
   </header>
   
 
-<section class="stash-grid">
-  <div id="ss-grid">
-   
-  
-      
-  </div>
-</section>
+  <section class="stash-grid">
+    <div id="ss-grid"></div>
+  </section>
 
-<!-- SINGLE MODAL -->
+<!-- INDIVIDUAL SCREENSHOT MODAL -->
 <div class="modal fade" id="itemDetail" tabindex="-1" role="dialog" aria-labelledby="itemDetailLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
-   
       <div class="modal-body">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-9">
-        <img src="https://via.placeholder.com/500x500" class="item-img img-fluid">
-      </div>
-      <div class="col-md-3">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <div class="clearfix"></div>
-        <h3 class="item-title"></h3>
-        <hr/>
-        <h6>Notes:</h6>
-        <p class="item-description">Description: </p>
-        <hr/>
-        <h6>Tags:</h6>
-        <div class="tags-wrap" id="itemDetailLabel"></div>
-        <hr/>
-        <h6>Date Added:</h6>
-        <p class="date-added small"></p>
-        <hr/>
-        <button type="button" target="_blank" class="btn btn-danger btn-block item-source">Visit Webpage</button>
+              <img src="https://via.placeholder.com/500x500" class="item-img img-fluid">
+            </div>
+            <div class="col-md-3">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <div class="clearfix"></div>
+              <h3 class="item-title"></h3>
+              <hr/>
+              <h6>Notes:</h6>
+              <p class="item-description"></p>
+              <hr/>
+              <h6>Tags:</h6>
+              <div class="tags-wrap" id="itemDetailLabel"></div>
+              <hr/>
+              <h6>Date Added:</h6>
+              <p class="date-added small"></p>
+              <hr/>
+              <button type="button" target="_blank" class="btn btn-danger btn-block item-source">Visit Webpage</button>
+            </div>
+          </div>
         </div>
-        </div></div>
       </div>
-      <!-- <div class="modal-footer">
-        <button type="button" class="btn btn-light">Edit</button>
-        
-      </div> -->
-      
     </div>
   </div>
 </div>
 
 
-<!-- FORM MODAL -->
+<!-- ADD ITEM FORM -->
 <div class="modal fade" id="addNewForm" tabindex="-1" role="dialog" aria-labelledby="addNewFormLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -127,7 +112,7 @@
         <form id="new-stash">
           <div class="form-group">
             <label for="ss-url">URL of webpage to save</label>
-            <input type="text" class="form-control form-control-lg" id="ss-url" aria-describedby="ss-url-help" placeholder="https://google.com">
+            <input type="url" class="form-control" id="ss-url" aria-describedby="ss-url-help" placeholder="https://google.com">
             <!-- <small id="ss-url-help" class="form-text text-muted">
               Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
             </small> -->
@@ -137,7 +122,7 @@
           </div>
           <div class="form-group">
             <label for="ss-label">Label Screenshot</label>
-            <input type="text" class="form-control form-control-lg" id="ss-label" placeholder="Parallax Inspiration">
+            <input type="text" class="form-control" id="ss-label" placeholder="Parallax Inspiration">
           </div>
           <!-- <div class="form-group">
             <label for="ss-title">Name Screenshot (optional)</label>
@@ -155,13 +140,13 @@
           </div> -->
           <div class="form-group">
             <label for="ss-tags">Add Tags</label>
-            <textarea class="form-control form-control-sm" id="ss-tags" rows="1"></textarea>
+            <textarea class="form-control form-control-sm" id="ss-tags" rows="2"></textarea>
           </div>
           <div class="form-group">
             <label for="ss-notes">Notes</label>
             <textarea class="form-control form-control-sm" id="ss-notes" rows="3"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+          <button type="submit" class="btn btn-warning btn-lg btn-block">Submit</button>
         </form>
       </div>
       
@@ -185,6 +170,57 @@
   </div>
 </div>
 
+<!-- EDIT MODAL -->
+<div class="modal fade" id="editItem" data-item-id="" tabindex="-1" role="dialog" aria-labelledby="editItemLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editItemLabel">Edit Stash Item</h5>
+        <button type="button" class="edit-item-close close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="edit-screenshot">
+          <fieldset disabled>
+            <div class="form-group">
+              <label for="ss-url-edit">URL of webpage to save</label>
+              <input type="url" aria-describedby="ss-url-edit-help" class="form-control" id="ss-url-edit">
+              <small id="ss-url-edit-help" class="form-text text-muted">
+                You cannot to edit the URL. To capture a new screenshot, delete this item and create a new one. 
+              </small> 
+            </div>
+          </fieldset>
+          
+          <!-- <div class="form-group">
+            <label for="ss-title">Name Screenshot (optional)</label>
+            <input type="text" class="form-control" id="ss-title" placeholder="Exploded Grid Layout">
+          </div> -->
+          <!-- <div class="form-group">
+            <label for="ss-projects">Projects</label>
+            <select multiple class="form-control" id="ss-projects">
+              <option>JH Public Art</option>
+              <option>Niche Interiors</option>
+              <option>Prenupta</option>
+              <option>The Katagami Project</option>
+              <option>The Unwinder</option>
+            </select>
+          </div> -->
+          <div class="form-group">
+            <label for="ss-tags-edit">Edit Tags</label>
+            <textarea class="form-control form-control-sm" id="ss-tags-edit" rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="ss-notes-edit">Edit Notes</label>
+            <textarea class="form-control form-control-sm" id="ss-notes-edit" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-warning btn-lg btn-block">Save Changes</button>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
 
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

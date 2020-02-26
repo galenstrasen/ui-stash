@@ -31,30 +31,60 @@ const getShots = () => {
       const ssDate = allShots[shot].date;
       const ssNotes = allShots[shot].notes;
       const gridItemElement = document.createElement('a');
-      // load form with info as value 
-      // if any of the values change, update the data
-      // or click "save changes"
       
+      // Create Card Cover El
       const cardCover = document.createElement('div');
-      cardCover.classList.add('card-content');
       const icoList = document.createElement('ul');
+      cardCover.classList.add('card-content');
       cardCover.appendChild(icoList);
+
+      // Create edit element
       const editLi = document.createElement('li');
-      icoList.appendChild(editLi);
       const editElement = document.createElement('i');
+      icoList.appendChild(editLi);
       editLi.appendChild(editElement);
       editElement.classList.add('fa', 'fa-pencil', 'edit');
-      
+      editElement.setAttribute('data-toggle', 'modal');
+      editElement.setAttribute('data-target', '#editItem');
+      const editForm = document.querySelector('#edit-screenshot');
+      editElement.addEventListener('click', function(event) {
+  
+        
+        const id = event.target.parentNode.parentNode.parentNode.parentNode.dataset.id;
+        editForm.setAttribute('data-item-id', id);
+        
+        // update form values with values from database
+        document.querySelector('#ss-url-edit').value = ssUrl;
+        document.querySelector('#ss-tags-edit').value = ssTags;
+        document.querySelector('#ss-notes-edit').value = ssNotes;
+        
+        editForm.addEventListener('submit', function(event){
+          event.preventDefault();
+          const id = event.target.getAttribute('data-item-id');
+          const newTags = document.querySelector('#ss-tags-edit').value;
+          const editedTags = newTags.split(',');
+          const editedNotes = document.querySelector('#ss-notes-edit').value;
+   
+          editShot(id, editedTags, editedNotes);
+          const close = document.querySelector('.edit-item-close');
+          simulateClick(close);
+        });
+
+      });
+
 
       // Create delete element
       const deleteLi = document.createElement('li');
-      icoList.appendChild(deleteLi);
       const deleteElement = document.createElement('i');
+      icoList.appendChild(deleteLi);
       deleteLi.appendChild(deleteElement);
       deleteElement.classList.add('fa', 'fa-trash', 'delete');
       deleteElement.setAttribute('data-toggle', 'modal');
       deleteElement.setAttribute('data-target', '#deleteItem');
+
+      // button in modal is what we use to delete from database 
       const deleteBtn = document.querySelector('.delete-item');
+
       // on delete element click, trigger modal 
       deleteElement.addEventListener('click', function(event) {
         if(deleteBtn.getAttribute('data-item-id').length > 0) {
@@ -131,8 +161,16 @@ const getShots = () => {
 
 const deleteShot = (id) => {
   // find message whose objectId is equal to the id we're searching with
-  const messageReference =  db.ref('screenshots').child(id);
-  messageReference.remove();
+  const shotReference =  db.ref('screenshots').child(id);
+  shotReference.remove();
+};
+
+const editShot = (id, tags, notes) => {
+  const shotReference =  db.ref('screenshots').child(id);
+  shotReference.update({
+    tags: tags,
+    notes: notes
+  });
 };
 
 
