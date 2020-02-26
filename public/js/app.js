@@ -66,6 +66,31 @@ const getShots = () => {
 
       gridItemElement.appendChild(cardCover);
    
+      gridItemElement.addEventListener('click', function(e) {
+          const tagsList = document.querySelector('#itemDetailLabel');
+          tagsList.textContent = ''; // clear tags list first
+          e.preventDefault();
+          const lgImg = document.querySelector('.item-img');
+          lgImg.src = ssImg;
+          const sourceLink = document.querySelector('.item-source');
+          sourceLink.href = ssUrl;
+          
+          const title = document.querySelector('.item-title');
+          title.textContent = ssTitle;
+
+          const date = document.querySelector('.date-added');
+          date.textContent = ssDate;
+
+          //tagsList.textContent = ssTags;
+          ssTags.forEach((tag) => {
+            let pill = document.createElement('button');
+            pill.classList.add('btn', 'btn-sm', 'btn-outline-info');
+            pill.textContent = tag;
+            tagsList.appendChild(pill);
+          });
+          const notesOutput = document.querySelector('.item-description');
+          notesOutput.textContent = ssNotes;
+        });
 
       
 
