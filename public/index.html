@@ -7,14 +7,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link href="https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700|Major+Mono+Display|Work+Sans:100,200,300,400,500,600,700,800&display=swap" rel="stylesheet">
 
     <link href="./css/style.css" rel="stylesheet">
 </head>
 <body>
   <header class="page-header">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">My UI Stash</a>
+    <a class="navbar-brand" href="#">UI Stash</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,10 +29,12 @@
             Projects
           </a>
           <div class="dropdown-menu" aria-labelledby="project-dropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Niche Interiors</a>
+            <a class="dropdown-item" href="#">The Katagami Project</a>
+            <a class="dropdown-item" href="#">The Beauty Library</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item text-secondary" href="#"><small>Manage Projects</small></a>
+            <a class="dropdown-item text-secondary" href="#"><small>Add New Project +</small></a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -53,58 +55,13 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form> -->
       <form class="form-inline my-2 my-lg-0">
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#addNewForm">
           Add new +
         </button>
       </form>
     
   </nav>
   </header>
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add New Item to Stash</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form id="new-stash">
-            <div class="form-group">
-              <label for="ss-url">URL of webpage to save</label>
-              <input type="text" class="form-control form-control-lg" id="ss-url" aria-describedby="ss-url-help" placeholder="https://google.com">
-              <!-- <small id="ss-url-help" class="form-text text-muted">
-                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-              </small> -->
-              <div class="invalid-feedback">
-                Please provide a valid URL.
-              </div>
-            </div>
-            <!-- <div class="form-group">
-              <label for="ss-title">Name Screenshot (optional)</label>
-              <input type="text" class="form-control" id="ss-title" placeholder="Exploded Grid Layout">
-            </div> -->
-            <!-- <div class="form-group">
-              <label for="ss-projects">Projects</label>
-              <select multiple class="form-control" id="ss-projects">
-                <option>JH Public Art</option>
-                <option>Niche Interiors</option>
-                <option>Prenupta</option>
-                <option>The Katagami Project</option>
-                <option>The Unwinder</option>
-              </select>
-            </div> -->
-            <div class="form-group">
-              <label for="ss-tags">Add Tags</label>
-              <textarea class="form-control form-control-sm" id="ss-tags" rows="1"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="ss-notes">Notes</label>
-              <textarea class="form-control form-control-sm" id="ss-notes" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Submit</button>
-          </form>
   
 
 <section class="stash-grid">
@@ -115,14 +72,120 @@
   </div>
 </section>
 
+<!-- SINGLE MODAL -->
+<div class="modal fade" id="itemDetail" tabindex="-1" role="dialog" aria-labelledby="itemDetailLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+   
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-9">
+        <img src="https://via.placeholder.com/500x500" class="item-img img-fluid">
+      </div>
+      <div class="col-md-3">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="clearfix"></div>
+        <h3 class="item-title"></h3>
+        <hr/>
+        <h6>Notes:</h6>
+        <p class="item-description">Description: </p>
+        <hr/>
+        <h6>Tags:</h6>
+        <div class="tags-wrap" id="itemDetailLabel"></div>
+        <hr/>
+        <h6>Date Added:</h6>
+        <p class="date-added small"></p>
+        <hr/>
+        <button type="button" target="_blank" class="btn btn-danger btn-block item-source">Visit Webpage</button>
         </div>
+        </div></div>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-light">Edit</button>
         
+      </div> -->
+      
+    </div>
+  </div>
+</div>
+
+
+<!-- FORM MODAL -->
+<div class="modal fade" id="addNewForm" tabindex="-1" role="dialog" aria-labelledby="addNewFormLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addNewFormLabel">Add New Item to Stash</h5>
+        <button type="button" class="item-close close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="new-stash">
+          <div class="form-group">
+            <label for="ss-url">URL of webpage to save</label>
+            <input type="text" class="form-control form-control-lg" id="ss-url" aria-describedby="ss-url-help" placeholder="https://google.com">
+            <!-- <small id="ss-url-help" class="form-text text-muted">
+              Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+            </small> -->
+            <div class="invalid-feedback">
+              Please provide a valid URL.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="ss-label">Label Screenshot</label>
+            <input type="text" class="form-control form-control-lg" id="ss-label" placeholder="Parallax Inspiration">
+          </div>
+          <!-- <div class="form-group">
+            <label for="ss-title">Name Screenshot (optional)</label>
+            <input type="text" class="form-control" id="ss-title" placeholder="Exploded Grid Layout">
+          </div> -->
+          <!-- <div class="form-group">
+            <label for="ss-projects">Projects</label>
+            <select multiple class="form-control" id="ss-projects">
+              <option>JH Public Art</option>
+              <option>Niche Interiors</option>
+              <option>Prenupta</option>
+              <option>The Katagami Project</option>
+              <option>The Unwinder</option>
+            </select>
+          </div> -->
+          <div class="form-group">
+            <label for="ss-tags">Add Tags</label>
+            <textarea class="form-control form-control-sm" id="ss-tags" rows="1"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="ss-notes">Notes</label>
+            <textarea class="form-control form-control-sm" id="ss-notes" rows="3"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<!-- DELETE MODAL -->
+<div class="modal fade delete-modal" id="deleteItem" tabindex="-1" role="dialog" aria-labelledby="itemDetailLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addNewFormLabel">Are You Sure You Want to Delete This?</h5>
+      </div>
+      <div class="modal-body">
+        <button type="button" class="btn btn-lg btn-secondary btn-close" data-dismiss="modal" aria-label="Close">Nope, nevermind!</button>
+        <button type="button" class="btn btn-lg btn-danger delete-item" data-dismiss="modal" data-item-id="">Yes, I'm Sure</button>
       </div>
     </div>
   </div>
+</div>
 
-  </div>
-</section>
+
   <!-- Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
