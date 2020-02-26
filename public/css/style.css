@@ -8,16 +8,18 @@ body {
 ------------------------------------- */
 .btn {
     text-transform: uppercase;
-    font-size: 12px;
     letter-spacing: .05em;
     border-radius: 0;
     transition: all ease-in-out .4s;
 }
 
+.btn:not(.btn-lg) {
+    font-size: 12px;
+}
+
 .btn-danger {
     background-color: orangered;
     border-color: orangered;
-    
 }
 
 .btn-danger:hover {
@@ -28,6 +30,16 @@ body {
 .btn-secondary {
     background-color: #BBB;
     border-color: #BBB;
+}
+
+.btn-warning {
+    color: #FFF;
+}
+
+.btn-warning:hover {
+    color: #FFF;
+    background: goldenrod;
+    border-color: goldenrod;
 }
 
 /* NAV BAR 
@@ -95,7 +107,7 @@ body {
     top: 0;
     left: 0;
     align-items: flex-start;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .grid-item .card-content, 
@@ -110,21 +122,32 @@ body {
     list-style-type: none;
     margin: 0;
     padding: 10px;
+    width: 100%;
 }
 
 .grid-item .card-content li {
     margin: 0;
     cursor: pointer;
+    display: flex;
+}
+
+.grid-item .card-content li.main-action {
+    margin-left: auto;
 }
 
 .grid-item i {
     line-height: 30px;
-    width: 30px;
+    width: 32px;
     text-align: center;
     display: flex;
     color: #FFF;
     align-items: center;
     justify-content: center;
+}
+
+.grid-item .btn.btn-white {
+    color: #FFF;
+    font-weight: 500;
 }
 
 /* hover styles */
@@ -140,6 +163,12 @@ body {
     background: #FFF;
 }
 
+.grid-item:hover .btn.btn-white {
+    background-color: #FFF;
+    color: orangered;
+}
+
+.grid-item .btn.btn-white:hover,
 .grid-item i:hover {
     background: orange;
     color: #FFF;
@@ -171,11 +200,12 @@ body {
 }
 
 .tags-wrap .btn {
-    margin-right: 10px;
-    margin-bottom: 10px;
+    margin: 0 10px 10px 0;
     border-radius: 10px;
     padding-top: 0;
-    padding-bottom: 2px;
+    padding-bottom: 0;
+    border-width: 2px;
+    font-weight: 600;
 }
 
 /* DELETE MODAL
