@@ -19,35 +19,70 @@ const fs = require('fs');
 
 
 // add form entries to database
-$('#new-stash').submit((e) => {
-    e.preventDefault();
+window.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('#new-stash').addEventListener('submit', function() {
+    event.preventDefault();
 
-    // grab URL input
-    const urlInput = $('#ss-url');
-    const ssUrl = urlInput.val();
-    urlInput.val('');
+    const ssUrl = document.querySelector('#ss-url').value;
+    document.querySelector('#ss-url').value = '';
 
-    // grab tags input
-    const tagsInput = $('#ss-tags');
-    const ssTags = tagsInput.val();
-    tagsInput.val('');
+    const ssLabel = document.querySelector('#ss-label').value;
+    document.querySelector('#ss-label').value = '';
+    
+    const tags = document.querySelector('#ss-tags').value;
+    const ssTags = tags.split(',');
+    document.querySelector('#ss-tags').value = '';
 
-    // grab notes input
-    const notesInput = $('#ss-notes');
-    const ssNotes = notesInput.val();
-    notesInput.val('');
+    const ssNotes = document.querySelector('#ss-notes').value;
+    document.querySelector('#ss-notes').value = '';
 
-    // create a section called screenshots inside database
+    let today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = today.getFullYear();
+
+    today = mm + '/' + dd + '/' + yyyy;
+
+    
+
+
+    // create screenshot 
+    options = {
+      url : ssUrl,
+      dimension : '1366xfull', 
+      device : 'desktop',
+      format: 'jpg',
+      cacheLimit: '14',
+      delay: '200',
+      zoom: '100'
+    }
+
+    const apiUrl = screenshotmachine.generateScreenshotApiUrl(ssmKey, ssmSecretPhrase, options);
+    // var fs = require('fs');
+    // var output = 'output.png';
+    // screenshotmachine.readScreenshot(apiUrl).pipe(fs.createWriteStream(output).on('close', function() {
+    //   console.log('Screenshot saved as ' + output);
+    // }));
+
     const ssRef = db.ref('screenshots');
-    // https://api.apiflash.com/v1/urltoimage?access_key=1e5bed6a223f4f1fa823655142d83ae9&format=jpeg&fresh=true&full_page=true&scroll_page=true&thumbnail_width=1400&url=http%3A%2F%2Fsnakeriverinteriors.com&width=1400
     ssRef.push({
-        url: ssUrl, 
-        tags: [ssTags],
-        notes: ssNotes
+      url: ssUrl, 
+      image: apiUrl,
+      label: ssLabel,
+      date: today,
+      tags: ssTags,
+      notes: ssNotes
     });
-});
 
-function createGridItem(url, tags, notes) {
-    const ssGrid = document.querySelector('#ss-grid');
-}
+    const tagsRef = db.ref('tags');
+    ssTags.forEach((tag) => {
+      tagsRef.push({
+        tagName: tag
+      });
+    });
+    
+
+  });
+  getShots();
+});
 
