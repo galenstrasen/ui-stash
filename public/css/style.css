@@ -1,24 +1,82 @@
+/* GLOBAL STYLES 
+------------------------------------- */
+body {
+    font-family: 'Work Sans', arial, sans-serif;
+}
 
-/* HEADER */
+/* BUTTONS 
+------------------------------------- */
+.btn {
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: .05em;
+    border-radius: 0;
+    transition: all ease-in-out .4s;
+}
+
+.btn-danger {
+    background-color: orangered;
+    border-color: orangered;
+    
+}
+
+.btn-danger:hover {
+    background-color: darkorange;
+    border-color: darkorange;
+}
+
+.btn-secondary {
+    background-color: #BBB;
+    border-color: #BBB;
+}
+
+/* NAV BAR 
+------------------------------------- */
 .page-header .navbar-expand-lg {
     justify-content: space-between;
 }
 
+/* brand */
+.navbar-light .navbar-brand {
+    font-weight: 100;
+    font-size: 20px;
+    letter-spacing: -.05em;
+    font-family: 'Major Mono Display', mono;
+    color: darkorange;
+}
+
+/* menu items */
 .page-header .navbar-expand-lg .navbar-nav {
     margin-left: auto;
     margin-right: auto;
 }
 
+.navbar-expand-lg .navbar-nav .nav-link {
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: .05em;
+    color: #000;
+}
 
-/* MASONRY GRID */
+
+
+/* MASONRY GRID 
+------------------------------------- */
 .stash-grid {
     padding: 10px;
 }
 
+/* GRID ITEM
+------------------------------------- */
 .grid-item {
     width: calc(20% - 20px);
     display: block;
     margin: 10px;
+    float: left;
+    min-height: 200px;
+    background: url('loading.gif') center center no-repeat #f8f9fa;
+    background-size: 20px;
+    position: relative;
 }
 
 .grid-item img {
@@ -26,3 +84,119 @@
     max-width: 100%;
     height: auto;
 }
+
+/* grid item overlay */
+.grid-item .card-content {
+    background-color: transparent;
+    display: flex;
+    position: absolute; 
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.grid-item .card-content, 
+.grid-item .card-content > *,
+.grid-item .card-content > * > * {
+    transition: all ease-in-out .4s;
+}
+
+/* icon list */
+.grid-item .card-content ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+}
+
+.grid-item .card-content li {
+    margin: 0;
+    cursor: pointer;
+}
+
+.grid-item i {
+    line-height: 30px;
+    width: 30px;
+    text-align: center;
+    display: flex;
+    color: #FFF;
+    align-items: center;
+    justify-content: center;
+}
+
+/* hover styles */
+.grid-item:hover .card-content {
+    background: rgba(255, 69, 0, 0.8);
+} 
+
+.grid-item:hover i {
+    color: orangered;
+}
+
+.grid-item:hover .card-content li {
+    background: #FFF;
+}
+
+.grid-item i:hover {
+    background: orange;
+    color: #FFF;
+}
+
+
+/* ITEM MODAL
+------------------------------------- */
+.modal-content {
+    border-radius: 0;
+}
+
+.close {
+    color: orangered;
+    transition: all ease-in-out .4s;
+}
+
+.close:hover {
+    color: darkorange;
+}
+
+.modal-xl img {
+    margin-bottom: 20px;
+}
+
+.tags-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tags-wrap .btn {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding-top: 0;
+    padding-bottom: 2px;
+}
+
+/* DELETE MODAL
+------------------------------------- */
+.delete-modal .modal-header {
+    display: flex;
+    justify-content: center;
+}
+
+.delete-modal .modal-body {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.delete-modal .btn {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+
+
+
