@@ -47,9 +47,10 @@ const getShots = () => {
       editElement.setAttribute('data-toggle', 'modal');
       editElement.setAttribute('data-target', '#editItem');
       const editForm = document.querySelector('#edit-screenshot');
+
+      // edit action
       editElement.addEventListener('click', function(event) {
   
-        
         const id = event.target.parentNode.parentNode.parentNode.parentNode.dataset.id;
         editForm.setAttribute('data-item-id', id);
         
@@ -214,7 +215,10 @@ window.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#ss-label').value = '';
     
     const tags = document.querySelector('#ss-tags').value;
-    const ssTags = tags.split(',');
+    // convert tags into array & trim whitespace
+    const ssTags = tags.split(',').map(function(tag) {
+      return tag.trim();
+    });
     document.querySelector('#ss-tags').value = '';
 
     const ssNotes = document.querySelector('#ss-notes').value;
@@ -227,9 +231,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     today = mm + '/' + dd + '/' + yyyy;
 
-    
-
-
+  
     // create screenshot 
     options = {
       url : ssUrl,
