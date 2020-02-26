@@ -65,7 +65,7 @@ const getShots = () => {
      
         deleteBtn.addEventListener('click', function(event) {
           const id = event.target.getAttribute('data-item-id');
-          deleteMessage(id); 
+          deleteShot(id); 
         });  
       });
 
@@ -128,7 +128,7 @@ const getShots = () => {
   });
 };
 
-const deleteMessage = (id) => {
+const deleteShot = (id) => {
   // find message whose objectId is equal to the id we're searching with
   const messageReference =  db.ref('screenshots').child(id);
   messageReference.remove();
