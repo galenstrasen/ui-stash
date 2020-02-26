@@ -102,46 +102,50 @@ const getShots = () => {
 
             
       const viewLi = document.createElement('li');
+      const viewElement = document.createElement('button');
+      viewElement.setAttribute('data-toggle', 'modal');
+      viewElement.setAttribute('data-target', '#itemDetail');
+      viewLi.classList.add('main-action');
       icoList.appendChild(viewLi);
-      const viewElement = document.createElement('i');
+      
       viewLi.appendChild(viewElement);
-      viewElement.classList.add('fa', 'fa-eye');
+      viewElement.classList.add('btn', 'btn-white');
+      viewElement.textContent = 'Details';
+      
+      viewElement.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const tagsList = document.querySelector('#itemDetailLabel');
+        tagsList.textContent = ''; // clear tags list first
+        
+        const lgImg = document.querySelector('.item-img');
+        lgImg.src = ssImg;
+        const sourceLink = document.querySelector('.item-source');
+        sourceLink.href = ssUrl;
+        
+        const title = document.querySelector('.item-title');
+        title.textContent = ssTitle;
+
+        const date = document.querySelector('.date-added');
+        date.textContent = ssDate;
+
+        //tagsList.textContent = ssTags;
+        ssTags.forEach((tag) => {
+          let pill = document.createElement('button');
+          pill.classList.add('btn', 'btn-sm', 'btn-outline-info');
+          pill.textContent = tag;
+          tagsList.appendChild(pill);
+        });
+        const notesOutput = document.querySelector('.item-description');
+        notesOutput.textContent = ssNotes;
+      });
+
       
 
       gridItemElement.appendChild(cardCover);
-   
-      // gridItemElement.addEventListener('click', function(e) {
-      //     const tagsList = document.querySelector('#itemDetailLabel');
-      //     tagsList.textContent = ''; // clear tags list first
-      //     e.preventDefault();
-      //     const lgImg = document.querySelector('.item-img');
-      //     lgImg.src = ssImg;
-      //     const sourceLink = document.querySelector('.item-source');
-      //     sourceLink.href = ssUrl;
-          
-      //     const title = document.querySelector('.item-title');
-      //     title.textContent = ssTitle;
-
-      //     const date = document.querySelector('.date-added');
-      //     date.textContent = ssDate;
-
-      //     //tagsList.textContent = ssTags;
-      //     ssTags.forEach((tag) => {
-      //       let pill = document.createElement('button');
-      //       pill.classList.add('btn', 'btn-sm', 'btn-outline-info');
-      //       pill.textContent = tag;
-      //       tagsList.appendChild(pill);
-      //     });
-      //     const notesOutput = document.querySelector('.item-description');
-      //     notesOutput.textContent = ssNotes;
-      //   });
-
-      
 
       gridItemElement.dataset.id = shot;
       gridItemElement.classList.add('grid-item');
-      // gridItemElement.setAttribute('data-toggle', 'modal');
-      // gridItemElement.setAttribute('data-target', '#itemDetail');
       tagsStr = ssTags.join(' ');
       gridItemElement.setAttribute('data-tags', tagsStr);
       let img = document.createElement('img');
