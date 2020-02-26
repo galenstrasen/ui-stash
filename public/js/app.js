@@ -17,6 +17,80 @@ const ssmKey = keys.ssmApi;
 const ssmSecretPhrase = keys.ssmSecret; 
 const fs = require('fs');
 
+const getShots = () => {
+  db.ref('screenshots').on('value', function(results) {
+    const ssGrid = document.querySelector('#ss-grid');
+    const screenshots = [];
+    const allShots = results.val(); // Firebase SDK method to get data from API response
+
+    for (let shot in allShots) {
+      const ssUrl = allShots[shot].url;
+      const ssImg = allShots[shot].image;
+      const ssTags = allShots[shot].tags;
+      const ssTitle = allShots[shot].title;
+      const ssDate = allShots[shot].date;
+      const ssNotes = allShots[shot].notes;
+      const gridItemElement = document.createElement('a');
+      // load form with info as value 
+      // if any of the values change, update the data
+      // or click "save changes"
+      const cardCover = document.createElement('div');
+      cardCover.classList.add('card-content');
+      const icoList = document.createElement('ul');
+      cardCover.appendChild(icoList);
+      const editLi = document.createElement('li');
+      icoList.appendChild(editLi);
+      const editElement = document.createElement('i');
+      editLi.appendChild(editElement);
+      editElement.classList.add('fa', 'fa-pencil', 'edit');
+      
+
+      // Create delete element
+      const deleteLi = document.createElement('li');
+      icoList.appendChild(deleteLi);
+      const deleteElement = document.createElement('i');
+      deleteLi.appendChild(deleteElement);
+      deleteElement.classList.add('fa', 'fa-trash', 'delete');
+      deleteElement.setAttribute('data-toggle', 'modal');
+      deleteElement.setAttribute('data-target', '#deleteItem');
+      const deleteBtn = document.querySelector('.delete-item');
+      
+
+            
+      const viewLi = document.createElement('li');
+      icoList.appendChild(viewLi);
+      const viewElement = document.createElement('i');
+      viewLi.appendChild(viewElement);
+      viewElement.classList.add('fa', 'fa-eye');
+      
+
+      gridItemElement.appendChild(cardCover);
+   
+
+      
+
+      gridItemElement.dataset.id = shot;
+      gridItemElement.classList.add('grid-item');
+      // gridItemElement.setAttribute('data-toggle', 'modal');
+      // gridItemElement.setAttribute('data-target', '#itemDetail');
+      tagsStr = ssTags.join(' ');
+      gridItemElement.setAttribute('data-tags', tagsStr);
+      let img = document.createElement('img');
+      img.src = ssImg;
+      gridItemElement.appendChild(img);
+
+      screenshots.push(gridItemElement);
+    }
+    while(ssGrid.firstChild) {
+      ssGrid.removeChild(ssGrid.firstChild);
+    }
+    screenshots.forEach((element) => {
+      ssGrid.appendChild(element);
+    });
+  });
+};
+
+
 var simulateClick = function (elem) {
 	// Create our event (with options)
 	var evt = new MouseEvent('click', {
