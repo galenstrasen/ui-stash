@@ -251,8 +251,8 @@ window.addEventListener('DOMContentLoaded', function() {
     const ssUrl = document.querySelector('#ss-url').value;
     document.querySelector('#ss-url').value = '';
 
-    const ssLabel = document.querySelector('#ss-label').value;
-    document.querySelector('#ss-label').value = '';
+    // const ssLabel = document.querySelector('#ss-label').value;
+    // document.querySelector('#ss-label').value = '';
     
     const tags = document.querySelector('#ss-tags').value;
     // convert tags into array & trim whitespace
